@@ -11,6 +11,7 @@ from user.services.Administration.Views.DeleteUser import UserDeleteView
 from user.services.Clients.Views.UpdateDeleteUser import UserUpdateProfileView
 from user.services.Clients.Views.RequestResetPassword import RequestPasswordResetView
 from user.services.Clients.Views.ConfirmResetPassword import PasswordResetConfirmView
+from user.services.Clients.Views.LogoutUser import LogoutUser
 from django.conf import settings
 
 
@@ -66,3 +67,7 @@ RequestPasswordResetView = RequestPasswordResetView.as_view()
 
 # Confirm password reset
 PasswordResetConfirmView = PasswordResetConfirmView.as_view()
+
+
+# Logout user
+LogoutUser = LogoutUser.as_view()

@@ -125,3 +125,8 @@ class PasswordResetConfirmSerializer(serializers.Serializer):
             from_email=f'{settings.EMAIL_HOST_USER}',
             recipient_list=[self.user.email],
         )
+
+
+# Logout user
+class LogoutUserSerializer(serializers.Serializer):
+    pass
