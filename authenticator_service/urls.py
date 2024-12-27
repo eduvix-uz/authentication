@@ -13,13 +13,13 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
-        title = "BuildHub.com Authentication service API",
+        title = "prohub.uz Authentication service API",
         default_version="v1",
-        description="This is a documentation for BuildHub.com authentication service API",
+        description="This is a documentation for prohub.uz authentication service API",
         contact=openapi.Contact("dilshod.normurodov1392@gmail.com", "dil-shod.uz"),
     ),
     public=True,
-    permission_classes=[permissions.AllowAny],
+    permission_classes=[permissions.IsAdminUser],
 )
 
 urlpatterns = [
