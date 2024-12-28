@@ -48,7 +48,7 @@ class UserLoginSerializer(serializers.Serializer):
             raise serializers.ValidationError("User account is disabled.")
 
         # Return only relevant user details
-        return {"username": user.username, "id": user.id}
+        return {"username": user.username, "id": user.id, "is_staff": user.is_staff}
 
 
 # User profile read, update and delete
