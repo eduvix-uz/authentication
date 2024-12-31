@@ -13,6 +13,8 @@ from user.services.Clients.Views.RequestResetPassword import RequestPasswordRese
 from user.services.Clients.Views.ConfirmResetPassword import PasswordResetConfirmView
 from user.services.Clients.Views.LogoutUser import LogoutUser
 from django.conf import settings
+from django.http import JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 
 # Verify email
@@ -71,3 +73,9 @@ PasswordResetConfirmView = PasswordResetConfirmView.as_view()
 
 # Logout user
 LogoutUser = LogoutUser.as_view()
+
+
+# Set CSRF cookie
+@ensure_csrf_cookie
+def set_csrf_cookie(request):
+    return JsonResponse({"message": "CSRF cookie set"})
