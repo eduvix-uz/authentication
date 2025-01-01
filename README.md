@@ -153,5 +153,6 @@ To deploy this project to a production environment:
 If you have any questions or feedback, feel free to reach out:  
 - **Email**: dilshod.normurodov1392@gmail.com 
 - **GitHub**: https://github.com/dilshod1405
+- **Telegram**: https://t.me/architect_developer
 
 ---
