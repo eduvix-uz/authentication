@@ -24,7 +24,8 @@ The project is built using **Django REST Framework (DRF)** and uses **PostgreSQL
 ## Technologies Used  
 
 - **Django REST Framework (DRF)**: The primary framework for building APIs.  
-- **PostgreSQL**: A powerful, open-source relational database.  
+- **PostgreSQL**: A powerful, open-source relational database.
+- **RabbitMQ**: A message broker used to send and receive messages.
 - **Environment Variables**: Securely configure sensitive information like database credentials using a `.env` file.  
 
 ---
@@ -37,7 +38,8 @@ Follow these steps to set up the project on your local machine.
 Make sure you have the following installed:  
 - **Python (version 3.12.3)**  
 - **PostgreSQL (for the database)**  
-- **Git (to clone the repository)**  
+- **Git (to clone the repository)**
+- **RabbitMQ (message broker)**  
 
 ### 2. Clone the Repository  
 First, download the project to your local machine.  
@@ -81,10 +83,15 @@ This project uses a `.env` file to store sensitive information.
    EMAIL_PORT=your_smtp_port  
    EMAIL_USE_TLS=True  
    EMAIL_HOST_USER=your_email@example.com  
-   EMAIL_HOST_PASSWORD=your_email_password  
+   EMAIL_HOST_PASSWORD=your_email_password
+   RABBITMQ_URL=your_rabbitmq_url 
    ```
 
-### 6. Set Up the Database  
+### 6. Set Up RabbitMQ  
+Ensure RabbitMQ is running on your machine or server. Use the URL provided in the `.env` file to connect the service. 
+
+
+### 7. Set Up the Database  
 This project uses PostgreSQL.  
 1. Open your PostgreSQL client or GUI tool and create a database.  
 2. Use the database credentials you added to the `.env` file.  
@@ -94,7 +101,7 @@ Apply the database migrations by running:
 python3 manage.py migrate  
 ```  
 
-### 7. Start the Server  
+### 8. Start the Server  
 Finally, start the development server by running:  
 ```bash  
 python3 manage.py runserver  
