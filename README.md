@@ -148,5 +148,3 @@ If you have any questions or feedback, feel free to reach out:
 - **GitHub**: https://github.com/dilshod1405
 
 ---
-
-This README is structured for clarity and ease of use. Let me know if you need further adjustments!
