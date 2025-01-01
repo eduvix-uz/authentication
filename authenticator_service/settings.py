@@ -1,6 +1,9 @@
 from pathlib import Path
 from decouple import config
 from datetime import timedelta
+import os
+ 
+load_getenv = os.getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,7 +18,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(' ')
 
 ACCESS_CONTROL_ALLOW_ORIGIN = config('ACCESS_CONTROL_ALLOW_ORIGIN')
 
@@ -201,10 +204,7 @@ SESSION_COOKIE_SECURE = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
+    "http://127.0.0.1",
 ]
 
 
@@ -214,4 +214,4 @@ if not DEBUG:
     ]
 
 
-CORS_ALLOW_CREDENTIALS = config('CORS_ALLOW_CREDENTIALS')
+CORS_ALLOW_CREDENTIALS = config('CORS_ALLOW_CREDENTIALS', cast=bool)
