@@ -1,4 +1,4 @@
-# Authentication Service for Online Learning Platform
+# Authentication Service for prohub.uz Online Learning Platform
 
 This project is an **Authentication Service** for an online learning platform. It helps manage user accounts, including registration with email confirmation, logging in, updating or deleting profiles, and admin tools for managing users.  
 
