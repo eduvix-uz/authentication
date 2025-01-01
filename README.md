@@ -82,7 +82,7 @@ This project uses a `.env` file to store sensitive information.
    EMAIL_USE_TLS=True  
    EMAIL_HOST_USER=your_email@example.com  
    EMAIL_HOST_PASSWORD=your_email_password  
-   ```  
+   ```
 
 ### 6. Set Up the Database  
 This project uses PostgreSQL.  
@@ -136,8 +136,8 @@ python3 manage.py createsuperuser
 
 To deploy this project to a production environment:  
 1. Set `DEBUG=False` in your `.env` file.  
-2. Use a production-ready web server like Gunicorn to serve the application.  
-3. Configure a reverse proxy like Nginx or Apache to forward requests.  
+2. Configure a reverse proxy like Nginx or Apache to forward requests. 
+3. Set allowed hosts in `CORS_ALLOWED_ORIGINS` to make connection with frontend.
 
 ---
 
