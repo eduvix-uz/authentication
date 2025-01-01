@@ -118,7 +118,7 @@ The application will be available at `http://127.0.0.1:8000/`.
 - Delete your profile: Send a DELETE request to the same endpoint.
 
 ### Reset Password
-- Send request url to user's email for resetting password via `/profile/password-reset/`.
+- Send request url to user's email to reset password via `/profile/password-reset/`.
 - Confirm requesting url to reset password with `/profile/password-reset-confirm/<uidb64>/<token>/`.
 
 ### Admin Commands  
