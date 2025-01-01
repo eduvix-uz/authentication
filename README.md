@@ -107,7 +107,7 @@ The application will be available at `http://127.0.0.1:8000/`.
 
 ### User Registration  
 - To create a new user, send a request to the `/profile/register/` endpoint with your email and password.  
-- After registration, you’ll receive an email to confirm your account. Click the link in the email to activate your profile.  
+- After registration, you’ll receive an email to confirm your account. Click the link in the email to activate your profile. Use `verify-email/<uuid:verification_code>/` for confirmation new user.  
 
 ### Logging In  
 - Use the `/profile/login/` endpoint to log in with your email and password. You’ll get a token that must be included in the headers of future requests.  
@@ -115,13 +115,20 @@ The application will be available at `http://127.0.0.1:8000/`.
 ### Profile Management  
 - View your profile: `/profile/control/{id}/`  
 - Update your profile: Send updated information to the same endpoint using a PUT request.  
-- Delete your profile: Send a DELETE request to the same endpoint.  
+- Delete your profile: Send a DELETE request to the same endpoint.
+
+### Reset Password
+- Send request url to user's email for resetting password via `/profile/password-reset/`.
+- Confirm requesting url to reset password with `/profile/password-reset-confirm/<uidb64>/<token>/`.
 
 ### Admin Commands  
 As an admin, you can manage users using custom Django commands. Run commands like this:  
 ```bash  
 python3 manage.py createsuperuser
-```  
+```
+- Get all users list by `/profile/all-users/` api url.
+- Update user by `/profile/manage/update/<int:pk>/`
+- Delete user by `/profile/manage/delete/<int:pk>/`
 
 ---
 
