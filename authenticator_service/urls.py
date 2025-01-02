@@ -19,7 +19,7 @@ schema_view = get_schema_view(
         contact=openapi.Contact("dilshod.normurodov1392@gmail.com", "dil-shod.uz"),
     ),
     public=True,
-    permission_classes=[permissions.AllowAny],
+    permission_classes=[permissions.IsAdminUser],
 )
 
 urlpatterns = [
