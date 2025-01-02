@@ -133,7 +133,7 @@ As an admin, you can manage users using custom Django commands. Run commands lik
 ```bash  
 python3 manage.py createsuperuser
 ```
-- Get all users list, get user by id, update, put, patch user via `/manager/update-user/` api url.
+- Get all users list, get user by id, update, put, patch user via `/manager/update-user/` api url. Default Router is used to manage clients beacuse of its requirement of shorter code and opportunity of rest framework.
 
 ---
 
