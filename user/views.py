@@ -5,9 +5,6 @@ from django.shortcuts import redirect
 from user.models import EmailVerification
 from user.services.Clients.Views.RegisterUser import UserRegistrationView
 from user.services.Clients.Views.LoginUser import UserLoginView
-from user.services.Administration.Views.ListAllUsers import UserInfoView
-from user.services.Administration.Views.UpdateUser import UserUpdateView
-from user.services.Administration.Views.DeleteUser import UserDeleteView
 from user.services.Clients.Views.UpdateDeleteUser import UserUpdateProfileView
 from user.services.Clients.Views.RequestResetPassword import RequestPasswordResetView
 from user.services.Clients.Views.ConfirmResetPassword import PasswordResetConfirmView
@@ -45,18 +42,6 @@ UserRegistrationView = UserRegistrationView.as_view()
 
 # User login
 UserLoginView = UserLoginView.as_view()
-
-
-# List of users for admin
-UserInfoView = UserInfoView.as_view()
-
-
-# Update user by admin
-UserUpdateView = UserUpdateView.as_view()
-    
-
-# Delete user by admin
-UserDeleteView = UserDeleteView.as_view()
 
 
 # Update and delete profile by user

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import verify_email, UserRegistrationView, UserLoginView, UserInfoView, UserUpdateView, UserDeleteView, UserUpdateProfileView, RequestPasswordResetView, PasswordResetConfirmView, LogoutUser, set_csrf_cookie
+from .views import verify_email, UserRegistrationView, UserLoginView, UserUpdateProfileView, RequestPasswordResetView, PasswordResetConfirmView, LogoutUser, set_csrf_cookie
 
 urlpatterns = [
     path('verify-email/<uuid:verification_code>/', verify_email, name='verify_email'),
@@ -10,10 +10,4 @@ urlpatterns = [
     path('password-reset/', RequestPasswordResetView, name='password_reset'),
     path('password-reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView, name='password_reset_confirm'),
     path("set-csrf-cookie/", set_csrf_cookie, name="set-csrf-cookie"),
-    
-    # urls for manager
-    path('all-users/', UserInfoView, name='info'),
-    path('manage/update/<int:pk>/', UserUpdateView, name='update'),
-    path('manage/delete/<int:pk>/', UserDeleteView, name='delete'),
-
 ]
