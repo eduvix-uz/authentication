@@ -133,9 +133,7 @@ As an admin, you can manage users using custom Django commands. Run commands lik
 ```bash  
 python3 manage.py createsuperuser
 ```
-- Get all users list by `/profile/all-users/` api url.
-- Update user by `/profile/manage/update/<int:pk>/`
-- Delete user by `/profile/manage/delete/<int:pk>/`
+- Get all users list, get user by id, update, put, patch user via `/manager/update-user/` api url.
 
 ---
 
