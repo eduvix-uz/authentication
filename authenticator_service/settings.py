@@ -43,9 +43,7 @@ INSTALLED_APPS = [
 
 CORS_ALLOW_ALL_ORIGINS = False
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS').split(' ')
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -204,9 +202,7 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1",
-]
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS').split(' ')
 
 
 if not DEBUG:
