@@ -8,7 +8,7 @@ def send_verification_email(user):
     
     # Email content
     subject = 'Elektron pochtani tasdiqlash'
-    verification_url = f"http://{settings.MAIN_DOMAIN_NAME}/verify-email/{verification_record.verification_code}/"
+    verification_url = f"{settings.MAIN_DOMAIN_NAME}/profile/verify-email/{verification_record.verification_code}/"
     message = f"Salom {user.first_name} {user.last_name},\n\nQuyidagi havola orqali elektron pochtangizni tasdiqlang:\n\n{verification_url}\n\nRaxmat!"
     
     send_mail(

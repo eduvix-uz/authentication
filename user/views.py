@@ -23,9 +23,9 @@ def verify_email(request, verification_code):
         user.is_verified = True
         user.save()
         send_mail(
-                    subject="BuildHub.com platformasiga xush kelibsiz!",
+                    subject="prohub.uz platformasiga xush kelibsiz!",
                     message=(
-                        f"Siz muvaffaqiyatli ro'yxatdan o'tdingiz! BuildHub kompaniyasi o'z mijozlariga sifatli xizmat ko'rsatish uchun doimo harakatda.\n\n"
+                        f"Hurmatli {user.first_name} {user.last_name} siz muvaffaqiyatli ro'yxatdan o'tdingiz! \n\n"
                     ),
                     from_email=settings.EMAIL_HOST_USER,
                     recipient_list=[user.email],

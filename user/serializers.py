@@ -90,7 +90,7 @@ class RequestPasswordSerializer(serializers.Serializer):
 
         reset_url = f"{settings.FRONTEND_DOMAIN_NAME}/change-password?uidb64={uid}&token={token}"
         send_mail(
-            subject="Parolni tiklash so'rovi",
+            subject="prohub.uz shaxsiy kabinet parolini tiklash so'rovi",
             message=f"Quyidagi havolaga kirish orqali shaxsingizni tasdiqlang: {reset_url}",
             from_email=f'{settings.EMAIL_HOST_USER}',
             recipient_list=[email],
