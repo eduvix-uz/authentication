@@ -18,7 +18,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(' ')
 
 ACCESS_CONTROL_ALLOW_ORIGIN = config('ACCESS_CONTROL_ALLOW_ORIGIN')
 
@@ -41,12 +41,11 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = False
 
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS').split(' ')
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -126,13 +125,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -202,13 +203,38 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
+
+
+
+# if not DEBUG:
+#     MIDDLEWARE = [
+#         'django.middleware.csrf.CsrfViewMiddleware',
+#     ]
+
+# CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS').split(' ')
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS').split(' ')
+CORS_ALLOW_CREDENTIALS = config('CORS_ALLOW_CREDENTIALS', cast=bool, default=False)
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+)
 
-if not DEBUG:
-    MIDDLEWARE = [
-        'django.middleware.csrf.CsrfViewMiddleware',
-    ]
-
-
-CORS_ALLOW_CREDENTIALS = config('CORS_ALLOW_CREDENTIALS', cast=bool)
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'errors.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}

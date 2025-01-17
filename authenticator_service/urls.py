@@ -10,6 +10,7 @@ from rest_framework_simplejwt.views import (
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
+from user.permissions import IsAdminPermission
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -19,7 +20,7 @@ schema_view = get_schema_view(
         contact=openapi.Contact("dilshod.normurodov1392@gmail.com", "dil-shod.uz"),
     ),
     public=True,
-    permission_classes=[permissions.IsAdminUser],
+    permission_classes=[permissions.IsAuthenticatedOrReadOnly,],
 )
 
 urlpatterns = [
@@ -29,9 +30,11 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
-    path('docs/', schema_view.with_ui('swagger',cache_timeout=0),name='swagger-docs'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    path('docs/', schema_view.with_ui('swagger',cache_timeout=0),name='swagger-docs'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

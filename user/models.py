@@ -19,6 +19,9 @@ class User(AbstractUser):
         return self.username
     
     def save(self, *args, **kwargs):
+        if self.is_staff == True and self.is_superuser == True:
+            self.is_active = True
+            self.is_verified = True
         if self.is_verified and not self.is_active:
             self.is_active = True
         super().save(*args, **kwargs)
@@ -28,3 +31,7 @@ class EmailVerification(models.Model):
     user = models.OneToOneField('User', on_delete=models.CASCADE)
     verification_code = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name = 'Email Verification'
+        verbose_name_plural = 'Email Verifications'

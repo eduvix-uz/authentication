@@ -12,6 +12,7 @@ from user.services.Clients.Views.LogoutUser import LogoutUser
 from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
+from rest_framework.response import Response
 
 
 # Verify email
@@ -34,7 +35,7 @@ def verify_email(request, verification_code):
         verification_record.delete()
         return redirect(f'{settings.SUCCESSFUL_CODE_URL}')
     except EmailVerification.DoesNotExist:
-        return redirect(f'{settings.UNSUCCESSFUL_CODE_URL}')
+        return Response({"error": "Invalid verification code."}, status=400)
 
 # User registration
 UserRegistrationView = UserRegistrationView.as_view()

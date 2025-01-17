@@ -1,10 +1,10 @@
 version: '3.9'
 
 services:
-  authenticator_service:
+  web:
     build: .
     container_name: authenticator_service
-    command: gunicorn authenticator_service.wsgi:application 0.0.0.0:8000
+    command: gunicorn authenticator_service.wsgi:application --bind 0.0.0.0:8000
     ports:
       - "8000:8000"
     environment:
@@ -24,34 +24,45 @@ services:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - default
 
   rabbitmq:
     image: rabbitmq:4.0.5-management
     container_name: prohub_rabbitmq
     ports:
-      - "5673:5672"
-      - "15673:15672"
+      - "5672:5672"
+      - "15672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
       RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_HOST}
       RABBITMQ_URI: ${RABBITMQ_URL}
+    networks:
+      - default
   
   nginx:
     image: nginx
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./static:/app/static
-      - ./media:/app//media
-    environment:
-      - MAIN_DOMAIN_NAME=${MAIN_DOMAIN_NAME}
+      - ./staticfiles:/app/staticfiles
+      - ./media:/app/media
+    depends_on:
+      - web
     networks:
       - default
 
 networks:
   default:
     driver: bridge
+
+volumes:
+  db_data:
+    driver: local
