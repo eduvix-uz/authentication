@@ -88,3 +88,5 @@ ehthumbs.db
 
 # Environment variables
 .env
+
+.db_data
