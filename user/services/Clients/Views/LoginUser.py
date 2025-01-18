@@ -15,7 +15,6 @@ class UserLoginView(APIView):
         serializer = UserLoginSerializer(data=request.data)
         if serializer.is_valid():
             refresh = RefreshToken.for_user(user)
-            
             async def login_user(username, user_id, is_staff, email, first_name, last_name):
                 await user_login(username, user_id, is_staff, email, first_name, last_name)
 
