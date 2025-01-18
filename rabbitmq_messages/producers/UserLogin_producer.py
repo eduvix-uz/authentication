@@ -3,7 +3,7 @@ import aio_pika
 from django.conf import settings
 import os
 
-async def user_login(username, user_id, is_staff, email, first_name, last_name):
+async def user_login(username, user_id, is_staff, email, first_name, last_name, photo):
     rabbitmq_url = os.getenv('RABBITMQ_URL', 'amqp://guest:guest@rabbitmq:5672/')
     try:
         # Establish a connection to RabbitMQ
@@ -23,6 +23,7 @@ async def user_login(username, user_id, is_staff, email, first_name, last_name):
                 "email": email,
                 "first_name": first_name,
                 "last_name": last_name,
+                "photo": photo
             })
             message = aio_pika.Message(body=message_body.encode())
 
