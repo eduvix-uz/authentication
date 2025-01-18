@@ -2,6 +2,7 @@ from pathlib import Path
 from decouple import config
 from datetime import timedelta
 import os
+import dj_database_url
  
 load_getenv = os.getenv
 
@@ -88,6 +89,10 @@ DATABASES = {
         'HOST': config('DB_HOST'),
         'PORT': config('DB_PORT'),
     }
+    
+    # 'default': dj_database_url.config(
+    #     default=config('DATABASE_URL')
+    # )
 }
 
 
@@ -190,10 +195,10 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 MAIN_DOMAIN_NAME = config('MAIN_DOMAIN_NAME')
 
-RABBITMQ_HOST = config('RABBITMQ_HOST')
-RABBITMQ_PORT = config('RABBITMQ_PORT')
-RABBITMQ_USER = config('RABBITMQ_USER')
-RABBITMQ_PASSWORD = config('RABBITMQ_PASSWORD')
+# RABBITMQ_HOST = config('RABBITMQ_HOST')
+# RABBITMQ_PORT = config('RABBITMQ_PORT')
+# RABBITMQ_USER = config('RABBITMQ_USER')
+# RABBITMQ_PASSWORD = config('RABBITMQ_PASSWORD')
 RABBITMQ_URL = config('RABBITMQ_URL')
 
 SUCCESSFUL_CODE_URL = config('SUCCESSFUL_CODE_URL')

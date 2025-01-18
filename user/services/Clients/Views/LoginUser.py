@@ -15,10 +15,20 @@ class UserLoginView(APIView):
         serializer = UserLoginSerializer(data=request.data)
         if serializer.is_valid():
             refresh = RefreshToken.for_user(user)
-            asyncio.run(user_login(username=serializer.validated_data['username'], user_id=serializer.validated_data['id'], is_staff=serializer.validated_data['is_staff'], email=serializer.validated_data['email'], first_name=serializer.validated_data['first_name'], last_name=serializer.validated_data['last_name']))
-            print(f'User: {serializer.validated_data["username"]}, id: {serializer.validated_data["id"]}, admin: {serializer.validated_data["is_staff"]}, email: {serializer.validated_data["email"]}, first_name: {serializer.validated_data["first_name"]}, last_name: {serializer.validated_data["last_name"]} logged in')
-            return Response({"data": serializer.validated_data,
-                             "refresh": str(refresh), 
-                             "access": str(refresh.access_token)}, 
-                            status=status.HTTP_200_OK)
+            
+            async def login_user(username, user_id, is_staff, email, first_name, last_name):
+                await user_login(username, user_id, is_staff, email, first_name, last_name)
+
+            asyncio.run(login_user(user.username, user.id, user.is_staff, user.email, user.first_name, user.last_name))
+            return Response({
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+                'username': user.username,
+                'id': user.id,
+                'is_staff': user.is_staff,
+                'email': user.email,
+                'first_name': user.first_name,
+                'last_name': user.last_name
+            }, status=status.HTTP_200_OK)
+            
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
