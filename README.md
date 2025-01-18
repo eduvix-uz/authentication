@@ -23,11 +23,11 @@ The project is built using **Django REST Framework (DRF)** and uses **PostgreSQL
 
 ## Technologies Used  
 
-<a href="https://www.djangoproject.com/"><img src="https://cdn.buttercms.com/zRXMXpcqQuaCbMu2mx1s" style="width: 80px;"></a>
+- **<a href="https://www.djangoproject.com/"><img src="https://cdn.buttercms.com/zRXMXpcqQuaCbMu2mx1s" style="width: 80px;"></a>**
 <br>
-<a href="https://www.postgresql.org/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6DdUxLa8GCaTGCkuun3tpbvKWU9dt1BPo_g&s" style="width: 80px;"></a>
-- [![PostgreSQL](https://www.vectorlogo.zone/logos/postgresql/postgresql-ar21.svg)](https://www.postgresql.org/)
-- [![RabbitMQ](https://upload.wikimedia.org/wikipedia/commons/3/31/RabbitMQ_logo.svg)](https://www.rabbitmq.com/)
+- **<a href="https://www.postgresql.org/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6DdUxLa8GCaTGCkuun3tpbvKWU9dt1BPo_g&s" style="width: 80px;"></a>**
+<br>
+- **<a href="https://www.rabbitmq.com/"><img src="https://i0.wp.com/dotsandbrackets.com/wp-content/uploads/2016/11/rabbitmq.jpg?fit=940%2C465&ssl=1" style="width: 80px;"></a>**
 - **Environment Variables**: Securely configure sensitive information like database credentials using a `.env` file.  
 
 ---
