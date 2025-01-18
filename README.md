@@ -24,6 +24,7 @@ The project is built using **Django REST Framework (DRF)** and uses **PostgreSQL
 ## Technologies Used  
 
 <a href="https://www.djangoproject.com/"><img src="https://cdn.buttercms.com/zRXMXpcqQuaCbMu2mx1s" style="width: 80px;"></a>
+<a href="https://www.postgresql.org/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6DdUxLa8GCaTGCkuun3tpbvKWU9dt1BPo_g&s" style="width: 80px;"></a>
 - [![PostgreSQL](https://www.vectorlogo.zone/logos/postgresql/postgresql-ar21.svg)](https://www.postgresql.org/)
 - [![RabbitMQ](https://upload.wikimedia.org/wikipedia/commons/3/31/RabbitMQ_logo.svg)](https://www.rabbitmq.com/)
 - **Environment Variables**: Securely configure sensitive information like database credentials using a `.env` file.  
