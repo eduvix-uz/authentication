@@ -35,6 +35,7 @@ class RegisterUserSerializer(serializers.ModelSerializer):
 class UserLoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
+    
 
     def validate(self, data):
         username = data.get('username')
@@ -48,7 +49,7 @@ class UserLoginSerializer(serializers.Serializer):
             raise serializers.ValidationError("User account is disabled.")
 
         # Return only relevant user details
-        return {"username": user.username, "id": user.id, "is_staff": user.is_staff, "email": user.email, "first_name": user.first_name, "last_name": user.last_name, "photo": user.photo}
+        return {"username": user.username, "id": user.id, "is_staff": user.is_staff, "email": user.email, "first_name": user.first_name, "last_name": user.last_name, "photo": user.photo.url}
 
 
 # User profile read, update and delete

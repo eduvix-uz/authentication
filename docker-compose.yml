@@ -9,11 +9,12 @@ services:
       - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=authenticator_service.settings
-      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672/
+      - RABBITMQ_URL=${RABBITMQ_URL}
     volumes:
       - .:/app
     depends_on:
       - rabbitmq
+      - db
     networks:
       - default
 
@@ -35,13 +36,13 @@ services:
     image: rabbitmq:management
     container_name: prohub_rabbitmq
     ports:
-      - "5673:5672"
-      - "15673:15672"
+      - "5672:5672"
+      - "15672:15672"
     environment:
-    #   # RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
-    #   # RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
-    #   # RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_HOST}
-      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
+    # #   # RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+    # #   # RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    # #   # RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_HOST}
+      RABBITMQ_URL: ${RABBITMQ_URL}
     networks:
       - default
   
@@ -63,6 +64,6 @@ networks:
   default:
     driver: bridge
 
-# volumes:
-#   db_data:
-#     driver: local
+volumes:
+  db_data:
+    driver: local
