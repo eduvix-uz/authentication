@@ -1,4 +1,4 @@
-<h1 style="text-align: center; font-size: 42px;"></h1>Authentication service of prohub.uz online learning platform</h1>
+### Authentication service of prohub.uz online learning platform
 
 This project is an **Authentication Service** for an online learning platform. It helps manage user accounts, including registration with email confirmation, logging in, updating or deleting profiles, and admin tools for managing users.  
 
