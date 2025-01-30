@@ -2,7 +2,6 @@ from pathlib import Path
 from decouple import config
 from datetime import timedelta
 import os
-import dj_database_url
  
 load_getenv = os.getenv
 
@@ -82,18 +81,18 @@ WSGI_APPLICATION = 'authenticator_service.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': config('DB_NAME'),
-    #     'USER': config('DB_USER'),
-    #     'PASSWORD': config('DB_PASSWORD'),
-    #     'HOST': config('DB_HOST'),
-    #     'PORT': config('DB_PORT'),
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
+    }
     
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    # 'default': dj_database_url.config(
+    #     default=config('DATABASE_URL')
+    # )
 }
 
 
@@ -194,13 +193,10 @@ EMAIL_USE_SSL = False
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-MAIN_DOMAIN_NAME = config('MAIN_DOMAIN_NAME')
-
 
 RABBITMQ_URL = config('RABBITMQ_URL')
 
 SUCCESSFUL_CODE_URL = config('SUCCESSFUL_CODE_URL')
-FRONTEND_DOMAIN_NAME = config('FRONTEND_DOMAIN_NAME')
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
