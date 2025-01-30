@@ -1,0 +1,15 @@
+stages:
+  - clone
+  - build
+
+clone_repo:
+  stage: clone
+  script:
+    - git clone https://github.com/dilshod1405/prohub.uz-authentication.git
+    - cd repo
+
+build:
+  stage: build
+  script:
+    - echo "Building the project..."
+    - docker-compose up --build
