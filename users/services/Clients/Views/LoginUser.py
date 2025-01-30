@@ -1,10 +1,10 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from user.serializers import UserLoginSerializer
+from users.serializers import UserLoginSerializer
 from rabbitmq_messages.producers.UserLogin_producer import user_login
 import asyncio
-from user.models import User
+from users.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 

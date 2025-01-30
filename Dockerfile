@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install Python dependencies
 COPY requirements.txt /app/
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 
@@ -25,6 +26,5 @@ ENV PYTHONUNBUFFERED=1 \
 EXPOSE 8000
 
 # Command to run the application
-CMD sh -c "python manage.py makemigrations && \
-           python manage.py migrate && \
-           gunicorn authenticator_service.wsgi:application --bind 0.0.0.0:8000"
+CMD ["bash", "-c", "gunicorn authenticator_service.wsgi:application --bind 0.0.0.0:8000"]
+

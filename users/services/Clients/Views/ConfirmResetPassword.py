@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from user.serializers import PasswordResetConfirmSerializer
+from users.serializers import PasswordResetConfirmSerializer
 from django.core.mail import send_mail
 
 class PasswordResetConfirmView(APIView):

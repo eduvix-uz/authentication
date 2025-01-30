@@ -1,5 +1,5 @@
-from user.models import User
-from user.serializers import UserUpdateSerializer
+from users.models import User
+from users.serializers import UserUpdateSerializer
 from rest_framework import permissions
 from rest_framework.viewsets import ModelViewSet
 

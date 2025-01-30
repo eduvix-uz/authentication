@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'user',
+    'users',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
@@ -152,7 +152,7 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = 'users.User'
 
 
 SIMPLE_JWT = {

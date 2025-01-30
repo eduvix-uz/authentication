@@ -1,5 +1,5 @@
-from user.services.Clients.Tests.TestLogin import TestLoginUser
-from user.services.Clients.Tests.TestRegister import TestRegisterUser
+from users.services.Clients.Tests.TestLogin import TestLoginUser
+from users.services.Clients.Tests.TestRegister import TestRegisterUser
 import unittest
 from rabbitmq_messages.test_rabbitmq import main
 

@@ -1,7 +1,7 @@
 from rest_framework import permissions
-from user.models import User
-from user.serializers import UserUpdateSerializer
-from user.permissions import IsOwner
+from users.models import User
+from users.serializers import UserUpdateSerializer
+from users.permissions import IsOwner
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
 

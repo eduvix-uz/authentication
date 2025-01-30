@@ -4,10 +4,7 @@ services:
   web:
     build: .
     container_name: authenticator_service
-    command: >
-      sh -c "python manage.py makemigrations &&
-             python manage.py migrate &&
-             gunicorn authenticator_service.wsgi:application --bind 0.0.0.0:8000"
+    command: bash -c "gunicorn authenticator_service.wsgi:application --bind 0.0.0.0:8000"
     ports:
       - "8000:8000"
     environment:

@@ -1,4 +1,4 @@
-from user.serializers import RegisterUserSerializer
+from users.serializers import RegisterUserSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
