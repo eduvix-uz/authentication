@@ -5,7 +5,7 @@ stages:
 clone_repo:
   stage: clone
   script:
-    - git clone https://github.com/dilshod1405/prohub.uz-authentication.git
+    - git clone https://$GITHUB_TOKEN@github.com/dilshod1405/prohub.uz-authentication.git
     - cd repo
 
 build:
