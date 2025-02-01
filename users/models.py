@@ -10,10 +10,6 @@ class User(AbstractUser):
     is_active = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
     
-    
-    class Meta:
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
 
     def __str__(self):
         return self.username
