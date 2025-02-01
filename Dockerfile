@@ -26,4 +26,4 @@ ENV PYTHONUNBUFFERED=1 \
 EXPOSE 8000
 
 # Command to run the application
-CMD ["bash", "-c", "gunicorn authenticator_service.wsgi:application --bind 0.0.0.0:8000"]
+CMD ["bash", "-c", "python manage.py makemigrations users && python manage.py migrate users && python manage.py collectstatic --noinput && gunicorn authenticator_service.wsgi:application --bind 0.0.0.0:8000"]
