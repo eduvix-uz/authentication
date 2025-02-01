@@ -210,7 +210,7 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 #         'django.middleware.csrf.CsrfViewMiddleware',
 #     ]
 
-# CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS').split(' ')
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS').split(' ')
 CORS_ALLOW_CREDENTIALS = config('CORS_ALLOW_CREDENTIALS', cast=bool, default=False)
