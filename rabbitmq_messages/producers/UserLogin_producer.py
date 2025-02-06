@@ -3,8 +3,8 @@ import aio_pika
 from django.conf import settings
 import os
 
-async def user_login(username, user_id, is_staff, email, first_name, last_name):
-    rabbitmq_url = os.getenv('RABBITMQ_URL', 'amqp://guest:guest@rabbitmq:5672/')
+async def user_login(username, user_id, is_staff, email):
+    rabbitmq_url = os.getenv('amqp://guest:guest@localhost:5672')
     try:
         # Establish a connection to RabbitMQ
         connection = await aio_pika.connect_robust(rabbitmq_url, timeout=3)
@@ -19,10 +19,8 @@ async def user_login(username, user_id, is_staff, email, first_name, last_name):
             message_body = json.dumps({
                 "username": username,
                 "user_id": user_id,
-                "is_admin": is_staff,
-                "email": email,
-                "first_name": first_name,
-                "last_name": last_name,
+                "is_staff": is_staff,
+                "email": email
             })
             message = aio_pika.Message(body=message_body.encode())
 
@@ -32,7 +30,7 @@ async def user_login(username, user_id, is_staff, email, first_name, last_name):
                 routing_key=queue.name,
             )
             # print(f"Message published to {queue.name}: {message_body}")
-            channel.close()
+            await channel.close()
     except aio_pika.exceptions.AMQPConnectionError as e:
         print(f"Failed to connect to RabbitMQ: {e}")
     except Exception as e:

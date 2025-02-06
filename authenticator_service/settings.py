@@ -204,7 +204,7 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-
+SERVER_NAME = config('server_name')
 
 
 # if not DEBUG:

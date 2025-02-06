@@ -15,22 +15,16 @@ class UserLoginView(APIView):
         serializer = UserLoginSerializer(data=request.data)
         if serializer.is_valid():
             refresh = RefreshToken.for_user(user)
-            async def login_user(username, user_id, is_staff, email, first_name, last_name):
-                await user_login(username, user_id, is_staff, email, first_name, last_name)
+            async def login_user(username, user_id, is_staff, email):
+                await user_login(username, user_id, is_staff, email)
 
-            asyncio.run(login_user(user.username, user.id, user.is_staff, user.email, user.first_name, user.last_name))
-            
-            photo_url = f"{request.scheme}://{request.get_host()}{user.photo.url}" if user.photo else None
+            asyncio.run(login_user(user.username, user.id, user.is_staff, user.email))
             return Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
                 'username': user.username,
                 'id': user.id,
-                'is_staff': user.is_staff,
-                'email': user.email,
-                'first_name': user.first_name,
-                'last_name': user.last_name,
-                'photo': photo_url
+                'is_staff': user.is_staff
             }, status=status.HTTP_200_OK)
             
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
