@@ -2,9 +2,6 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from users.serializers import UserLoginSerializer
-from rabbitmq_messages.producers.UserLogin_producer import user_login
-import asyncio
-from users.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 
@@ -15,10 +12,6 @@ class UserLoginView(APIView):
         serializer = UserLoginSerializer(data=request.data)
         if serializer.is_valid():
             refresh = RefreshToken.for_user(user)
-            async def login_user(username, user_id, is_staff, email):
-                await user_login(username, user_id, is_staff, email)
-
-            asyncio.run(login_user(user.username, user.id, user.is_staff, user.email))
             return Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
