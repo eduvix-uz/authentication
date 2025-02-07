@@ -25,7 +25,6 @@ The project is built using **Django REST Framework (DRF)** and uses **PostgreSQL
 
 - **<a href="https://www.djangoproject.com/"><img src="https://cdn.buttercms.com/zRXMXpcqQuaCbMu2mx1s" style="width: 100px;"></a>**<br>
 - **<a href="https://www.postgresql.org/"><img src="https://templates.peakboard.com/extensions/PostgreSQL/PostgreSQL_Extension_Logo.png" style="width: 100px;"></a>**<br>
-- **<a href="https://www.rabbitmq.com/"><img src="https://www.rabbitmq.com/img/rabbitmq-logo-with-name.svg" style="width: 100px;"></a>**
 - **Environment Variables**: Securely configure sensitive information like database credentials using a `.env` file.  
 
 ---
@@ -84,7 +83,7 @@ This project uses a `.env` file to store sensitive information.
    EMAIL_USE_TLS=True  
    EMAIL_HOST_USER=your_email@example.com  
    EMAIL_HOST_PASSWORD=your_email_password
-   RABBITMQ_URL=your_rabbitmq_url 
+   ...
    ```
 
 ### 6. Set Up RabbitMQ  
@@ -142,9 +141,8 @@ python3 manage.py createsuperuser
 To deploy this project to a production environment:  
 1. Set `DEBUG=False` in the `.env` file.  
 2. Use a production-ready web server like Gunicorn or uWSGI to serve the application.  
-3. Configure a reverse proxy like Nginx or Apache for handling incoming requests.  
-4. Ensure RabbitMQ is running and reachable via the configured `RABBITMQ_URL`.   
-5. Set allowed hosts in `CORS_ALLOWED_ORIGINS` to make connection with frontend.
+3. Configure a reverse proxy like Nginx or Apache for handling incoming requests.   
+4. Set allowed hosts in `CORS_ALLOWED_ORIGINS` to make connection with frontend.
 
 ---
 
