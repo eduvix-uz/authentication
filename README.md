@@ -38,7 +38,6 @@ Make sure you have the following installed:
 - **Python (version 3.12.3)**  
 - **PostgreSQL (for the database)**  
 - **Git (to clone the repository)**
-- **RabbitMQ (message broker)**  
 
 ### 2. Clone the Repository  
 First, download the project to your local machine.  
@@ -86,11 +85,7 @@ This project uses a `.env` file to store sensitive information.
    ...
    ```
 
-### 6. Set Up RabbitMQ  
-Ensure RabbitMQ is running on your machine or server. Use the URL provided in the `.env` file to connect the service. 
-
-
-### 7. Set Up the Database  
+### 6. Set Up the Database  
 This project uses PostgreSQL.  
 1. Open your PostgreSQL client or GUI tool and create a database.  
 2. Use the database credentials you added to the `.env` file.  
@@ -100,7 +95,7 @@ Apply the database migrations by running:
 python3 manage.py migrate  
 ```  
 
-### 8. Start the Server  
+### 7. Start the Server  
 Finally, start the development server by running:  
 ```bash  
 python3 manage.py runserver  
