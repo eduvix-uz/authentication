@@ -9,11 +9,11 @@ services:
       - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=authenticator_service.settings
-      - RABBITMQ_URL=${RABBITMQ_URL}
+      # - RABBITMQ_URL=${RABBITMQ_URL}
     volumes:
       - .:/app
     depends_on:
-      - rabbitmq
+      # - rabbitmq
       - db
     networks:
       - default
@@ -32,16 +32,16 @@ services:
     networks:
       - default
 
-  rabbitmq:
-    image: rabbitmq:management
-    container_name: prohub_rabbitmq
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    environment:
-      RABBITMQ_URL: ${RABBITMQ_URL}
-    networks:
-      - default
+  # rabbitmq:
+  #   image: rabbitmq:management
+  #   container_name: prohub_rabbitmq
+  #   ports:
+  #     - "5672:5672"
+  #     - "15672:15672"
+  #   environment:
+  #     RABBITMQ_URL: ${RABBITMQ_URL}
+  #   networks:
+  #     - default
   
   nginx:
     image: nginx

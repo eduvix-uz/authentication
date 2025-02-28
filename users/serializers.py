@@ -132,7 +132,7 @@ class PasswordResetConfirmSerializer(serializers.Serializer):
 class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email', 'is_active', 'is_verified', 'id')
+        fields = ('username', 'email', 'is_active', 'is_verified', 'id', 'first_name', 'last_name')
 
 
 # Logout user
