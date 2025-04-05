@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 
+roles = (
+    ('student', 'Student'),
+    ('teacher', 'Teacher'),
+)
+
 class User(AbstractUser):
     photo = models.ImageField(upload_to='user_photos/', null=True, blank=True)
     first_name = models.CharField(max_length=255)
@@ -9,6 +14,11 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
+    role = models.CharField(max_length=10, choices=roles, default='student')
+    
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
     
 
     def __str__(self):
